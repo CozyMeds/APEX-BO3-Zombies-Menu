@@ -11,13 +11,15 @@ apexClient()
     wait 1;
 
     self.apexOpen = 0;
-    self.apexPage = 0;       // 0 = root; 1 = God Mode; 2..6 = placeholders; 7 = settings.
+    self.apexPage = 0;       // 0 = root; 1 = player options; 2..6 = placeholders; 7 = settings.
     self.apexSelected = 0;
     self.apexAdjusting = 0;
     self.apexFovPreview = 90;
     self.apexFovOriginal = 90;
     self.apexDemoToggle = 0;
-    self.apexGodMode = 0;  // Starts OFF each match/client initialization.
+    self.apexGodMode = 0;     // Starts OFF each match/client initialization.
+    self.apexInfiniteAmmo = 0; // Reserve ammo refill starts OFF.
+    self.apexNoReload = 0;    // Magazine refill starts OFF.
 
     self apexCreateUI();
 	self thread apexReadyNotification();

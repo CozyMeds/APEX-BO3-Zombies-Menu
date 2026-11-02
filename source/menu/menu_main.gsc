@@ -6,7 +6,7 @@ apexCount()
     if (self.apexPage == 7)
         return 3;
     if (self.apexPage == 1)
-        return 2;  // God Mode + Back.
+        return 4;  // God Mode + Infinite Ammo + No Reload + Back.
     return 2;
 }
 
@@ -34,6 +34,18 @@ apexLabel(index)
             return "GOD MODE: OFF";
         }
         if (index == 1)
+        {
+            if (self.apexInfiniteAmmo)
+                return "INFINITE AMMO: ON";
+            return "INFINITE AMMO: OFF";
+        }
+        if (index == 2)
+        {
+            if (self.apexNoReload)
+                return "NO RELOAD: ON";
+            return "NO RELOAD: OFF";
+        }
+        if (index == 3)
             return "< BACK";
     }
     if (self.apexPage == 7)
@@ -76,7 +88,7 @@ apexRender()
     if (!self.apexOpen)
         return;
 
-    self.apexSubTitle setText(self apexPageName() + "  /  v0.2");
+    self.apexSubTitle setText(self apexPageName() + "  /  v0.5");
     self.apexHighlight.y = 140 + (self.apexSelected * 27);
 
     for (i = 0; i < 7; i++)

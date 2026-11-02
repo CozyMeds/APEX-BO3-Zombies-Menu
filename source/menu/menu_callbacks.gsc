@@ -16,6 +16,16 @@ apexSelect()
             self apexToggleGodMode();
             self apexRender();
         }
+        else if (self.apexSelected == 1)
+        {
+            self apexToggleInfiniteAmmo();
+            self apexRender();
+        }
+        else if (self.apexSelected == 2)
+        {
+            self apexToggleNoReload();
+            self apexRender();
+        }
         else
             self apexBack();
         return;
