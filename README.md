@@ -1,8 +1,8 @@
-# APEX Zombies v0.5 — No Reload test build (unreleased)
+# APEX Zombies v0.5 — No Reload (unreleased)
 
 **Target:** Call of Duty: Black Ops III Zombies, PS4 1.33.
 
-This build extends the **developer-tested v0.4** modular menu with a separate **No Reload** toggle. The new feature is **not yet compiled or tested on PS4**. No public GitHub release was created.
+This build extends the **developer-tested v0.4** modular menu with a separate **No Reload** toggle.
 
 ## Player Options
 
