@@ -1,0 +1,12 @@
+# Temporary builds and packaged compiler output
+build/
+*.gscc
+# Third-party compiled menu references; keep them local unless authorised to distribute.
+references/
+# Local, single-file backups (avoid duplicate code in the source directory).
+backups/
+# Editor / OS files
+.vs/
+*.user
+.DS_Store
+Thumbs.db
