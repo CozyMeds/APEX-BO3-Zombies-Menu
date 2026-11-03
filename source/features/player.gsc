@@ -7,13 +7,13 @@ apexToggleGodMode()
     {
         self EnableInvulnerability();
         self.apexGodMode = 1;
-        self IPrintLnBold("^5APEX ^7God Mode: ^2ON");
+        self IPrintLnBold("^7God Mode: ^2ON");
     }
     else
     {
         self DisableInvulnerability();
         self.apexGodMode = 0;
-        self IPrintLnBold("^5APEX ^7God Mode: ^1OFF");
+        self IPrintLnBold("^7God Mode: ^1OFF");
     }
 }
 
@@ -25,13 +25,13 @@ apexToggleInfiniteAmmo()
     {
         self.apexInfiniteAmmo = 1;
         self thread apexInfiniteAmmoLoop();
-        self IPrintLnBold("^5APEX ^7Infinite Ammo: ^2ON");
+        self IPrintLnBold("^7Infinite Ammo: ^2ON");
     }
     else
     {
         self.apexInfiniteAmmo = 0;
         self notify("apex_infinite_ammo_stop");
-        self IPrintLnBold("^5APEX ^7Infinite Ammo: ^1OFF");
+        self IPrintLnBold("^7Infinite Ammo: ^1OFF");
     }
 }
 
@@ -66,13 +66,13 @@ apexToggleNoReload()
     {
         self.apexNoReload = 1;
         self thread apexNoReloadLoop();
-        self IPrintLnBold("^5APEX ^7No Reload: ^2ON");
+        self IPrintLnBold("^7No Reload: ^2ON");
     }
     else
     {
         self.apexNoReload = 0;
         self notify("apex_no_reload_stop");
-        self IPrintLnBold("^5APEX ^7No Reload: ^1OFF");
+        self IPrintLnBold("^7No Reload: ^1OFF");
     }
 }
 
@@ -134,5 +134,5 @@ apexApplyMoveSpeed()
 {
     speed = self.apexMoveSpeedStep * 0.50;
     self SetMoveSpeedScale(speed);
-    self IPrintLnBold("^5APEX ^7Movement Speed: ^2" + self apexMoveSpeedText());
+    self IPrintLnBold("^7Movement Speed: ^2" + self apexMoveSpeedText());
 }

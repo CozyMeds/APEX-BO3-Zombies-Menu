@@ -38,6 +38,17 @@ apexSelect()
         return;
     }
 
+	if (self.apexPage == 2)
+	{
+		if (self.apexSelected == 0)
+		{
+			self apexRefillAmmo();
+		}
+		else 
+			self apexBack();
+		return;
+	}
+
     if (self.apexPage == 7)
     {
         if (self.apexSelected == 0)

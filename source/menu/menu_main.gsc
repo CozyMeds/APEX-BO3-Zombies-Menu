@@ -50,6 +50,13 @@ apexLabel(index)
         if (index == 4)
             return "< BACK";
     }
+	if (self.apexPage == 2)
+		{
+			if (index == 0)
+				return "REFILL AMMO";
+			if (index == 1)
+				return "< BACK";
+	}
     if (self.apexPage == 7)
     {
         switch (index)
