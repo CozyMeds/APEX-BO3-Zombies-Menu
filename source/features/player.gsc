@@ -100,3 +100,39 @@ apexNoReloadLoop()
         wait 0.05;
     }
 }
+
+// Movement speed is a selectable multiplier of the player's normal speed.
+// Store it in quarter steps to avoid floating-point rounding in the HUD.
+// 1 -> 0.50x; 2 -> 1.00x (default); 4 -> 2.00x.
+apexMoveSpeedText()
+{
+    switch (self.apexMoveSpeedStep)
+    {
+        case 1: return "0.50x";
+        case 2: return "1.00x";
+        case 3: return "1.50x";
+        case 4: return "2.00x";
+        case 5: return "2.50x";
+        case 6: return "3.00x";
+        case 7: return "3.50x";
+        case 8: return "4.00x";
+				case 9: return "4.50x";
+        case 10: return "5.00x";
+        case 11: return "5.50x";
+        case 12: return "6.00x";
+        case 13: return "6.50x";
+        case 14: return "7.00x";
+        case 15: return "7.50x";
+        case 16: return "8.00x";
+    }
+    return "1.00x";
+}
+
+// Only applied when the player confirms the slider with Square.
+// Reset by selecting 1.00x and saving.
+apexApplyMoveSpeed()
+{
+    speed = self.apexMoveSpeedStep * 0.50;
+    self SetMoveSpeedScale(speed);
+    self IPrintLnBold("^5APEX ^7Movement Speed: ^2" + self apexMoveSpeedText());
+}

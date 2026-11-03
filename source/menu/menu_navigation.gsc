@@ -20,9 +20,11 @@ apexClient()
     self.apexGodMode = 0;     // Starts OFF each match/client initialization.
     self.apexInfiniteAmmo = 0; // Reserve ammo refill starts OFF.
     self.apexNoReload = 0;    // Magazine refill starts OFF.
+    self.apexMoveSpeedStep = 2;      // 2 * 0.50 = 1.00
+    self.apexMoveSpeedOriginal = 2;  // Saved value for R3 cancellation.
 
     self apexCreateUI();
-	self thread apexReadyNotification();
+		self thread apexReadyNotification();
 
     wasCombo = 0;
     wasMelee = 0;
@@ -62,26 +64,50 @@ apexClient()
             {
                 if (left && !wasLeft)
                 {
-                    self.apexFovPreview -= 5;
-                    if (self.apexFovPreview < 60)
-                        self.apexFovPreview = 60;
+                    if (self.apexAdjusting == 2)
+                    {
+                        self.apexMoveSpeedStep--;
+                        if (self.apexMoveSpeedStep < 1)
+                            self.apexMoveSpeedStep = 1;
+                    }
+                    else
+                    {
+                        self.apexFovPreview -= 5;
+                        if (self.apexFovPreview < 60)
+                            self.apexFovPreview = 60;
+                    }
                     self apexRender();
                 }
                 if (right && !wasRight)
                 {
-                    self.apexFovPreview += 5;
-                    if (self.apexFovPreview > 120)
-                        self.apexFovPreview = 120;
+                    if (self.apexAdjusting == 2)
+                    {
+                        self.apexMoveSpeedStep++;
+                        if (self.apexMoveSpeedStep > 16)
+                            self.apexMoveSpeedStep = 16;
+                    }
+                    else
+                    {
+                        self.apexFovPreview += 5;
+                        if (self.apexFovPreview > 120)
+                            self.apexFovPreview = 120;
+                    }
                     self apexRender();
                 }
                 if (select && !wasSelect)
                 {
-                    self.apexAdjusting = 0;   // Accept preview value.
+                    // FOV remains a preview; movement speed applies on Save.
+                    if (self.apexAdjusting == 2)
+                        self apexApplyMoveSpeed();
+                    self.apexAdjusting = 0;
                     self apexRender();
                 }
                 if (melee && !wasMelee && !aim)
                 {
-                    self.apexFovPreview = self.apexFovOriginal; // Cancel.
+                    if (self.apexAdjusting == 2)
+                        self.apexMoveSpeedStep = self.apexMoveSpeedOriginal;
+                    else
+                        self.apexFovPreview = self.apexFovOriginal;
                     self.apexAdjusting = 0;
                     self apexRender();
                 }

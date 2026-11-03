@@ -8,7 +8,7 @@ apexCreateUI()
 
     self.apexTitle = self apexText(39, 81, 2.0,(0.06, 0.82, 1),"APEX");
 
-	self.apexSubTitle = self apexText(40, 111, 1.5,(0.58, 0.76, 0.86),"ZOMBIES / v0.5");
+	self.apexSubTitle = self apexText(40, 111, 1.5,(0.58, 0.76, 0.86),"ZOMBIES / v0.6");
 
 	self.apexFooter = self apexText(38, 347, 0.5,(0.58, 0.85, 0.95),"");
 
